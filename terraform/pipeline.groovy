@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/Aj7Ay/Netflix-clone.git'
+                git branch: 'main', url: 'https://github.com/paraspahwa/Netflix-clone.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -53,7 +53,7 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
-                       sh "docker build --build-arg TMDB_V3_API_KEY=a76c534422b523e0e976c7ea39298c4b -t netflix ."
+                       sh "docker build --build-arg TMDB_V3_API_KEY=xxxxxxxxxxxxxxxx -t netflix ."
                        sh "docker tag netflix paraspahwa/netflix:latest "
                        sh "docker push paraspahwa/netflix:latest "
                     }
